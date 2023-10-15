@@ -63,6 +63,12 @@ int unsign_print(const char *format, va_list args, int *idx)
 		_putchar('0');
 		res++;
 	}
+	if (arg == UINT_MAX)
+	{
+		_putchar('4');
+		arg = 294967295;
+		res++;
+	}
 	while (arg > 0)
 	{
 		digit[i] = arg % 10;

@@ -14,9 +14,18 @@ int str_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (args == NULL)
 		return (-1);
-	if (!arg)
-		return (-1);
-	while (arg[i] != '\0' && arg)
+	if (arg == NULL)
+	{
+		_putchar('(');
+		_putchar('N');
+		_putchar('U');
+		_putchar('L');
+		_putchar('L');
+		_putchar(')');
+		(*idx)++;
+		return (6);
+	}
+	while (arg[i] != '\0')
 	{
 		_putchar(arg[i]);
 		i++;
