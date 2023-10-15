@@ -9,18 +9,16 @@
 int str_print(const char *format, va_list args, int *idx)
 {
 	int i = 0;
-	char *arg = va_arg(args, char *);
+	char *arg = (char *)va_arg(args, char *);
 
 	(void)format;
-	if (args == NULL)
-		return (-1);
 	if (arg == NULL)
 	{
 		_putchar('(');
-		_putchar('N');
-		_putchar('U');
-		_putchar('L');
-		_putchar('L');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
 		_putchar(')');
 		(*idx)++;
 		return (6);
