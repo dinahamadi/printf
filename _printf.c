@@ -22,8 +22,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			idx++;
-			if (format[idx] == '\0')
+			if (format[++idx] == '\0')
 				return (-1);
 			rtrn = get_format(format, args, &idx);
 			if (rtrn == -1)

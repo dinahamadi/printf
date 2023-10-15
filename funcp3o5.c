@@ -9,7 +9,7 @@
 int str_print(const char *format, va_list args, int *idx)
 {
 	char *arg = (char *)va_arg(args, char *);
-
+	i = 0;
 	(void)format;
 	if (arg == NULL)
 	{
@@ -22,9 +22,11 @@ int str_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (6);
 	}
-	write(1, arg, strlen(arg));
+	while (arg[i] != '\0')
+		i++;
+	write(1, arg, i);
 	(*idx)++;
-	return (strlen(arg));
+	return (i);
 }
 /**
  * str_np_print - handle the %S in printf
