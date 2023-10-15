@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 
 	va_list(args);
 	va_start(args, format);
-	if (format == NULL)
+	if (format == NULL || *forma == '\0');
 		return (-1);
 	while (format[idx] != '\0')
 	{
