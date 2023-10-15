@@ -26,7 +26,6 @@ int str_print(const char* format, va_list args, int* idx)
 	(*idx)++;
 	return (strlen(arg));
 }
-}
 /**
  * str_np_print - handle the %S in printf
  * @format: the first argument
