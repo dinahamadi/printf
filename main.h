@@ -20,7 +20,7 @@ extern int idx;
  */
 typedef struct op
 {
-	char op;
+	char *op;
 	int (*f)(const char *format, ...);
 } op_t;
 

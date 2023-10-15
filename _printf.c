@@ -45,16 +45,16 @@ int get_flag(const char *format, va_list args, int *idx)
 	int i = 0, wd = 0;
 
 	op_t flag[] = {
-		{'l', (int (*)(const char*, ...))long_print},
-		{'h', (int (*)(const char*, ...))short_print},
-		{'0', (int (*)(const char*, ...))zero_padd_print},
-		{'-', (int (*)(const char*, ...))l_align_print},
-		{'+', (int (*)(const char*, ...))sign_print},
-		{'.', (int (*)(const char*, ...))precision_print},
-		{'*', (int (*)(const char*, ...))wd_width_print},
-		{'#', (int (*)(const char*, ...))prefix_print},
-		{' ', (int (*)(const char*, ...))space_print},
-		{0, NULL}
+		{"l", (int (*)(const char*, ...))long_print},
+		{"h", (int (*)(const char*, ...))short_print},
+		{"0", (int (*)(const char*, ...))zero_padd_print},
+		{"-", (int (*)(const char*, ...))l_align_print},
+		{"+", (int (*)(const char*, ...))sign_print},
+		{".", (int (*)(const char*, ...))precision_print},
+		{"*", (int (*)(const char*, ...))wd_width_print},
+		{"#", (int (*)(const char*, ...))prefix_print},
+		{" ", (int (*)(const char*, ...))space_print},
+		{NULL, NULL}
 	};
 	if (isdigit(format[*idx]) != 0 && (atoi(&format[*idx]) != 0))
 	{
@@ -63,7 +63,7 @@ int get_flag(const char *format, va_list args, int *idx)
 	}
 	while (i < 10)
 	{
-		if (flag[i].op == format[*idx])
+		if (flag[i].op[0] == format[*idx])
 			return (flag[i].f(format, args, wd, &idx));
 		i++;
 	}
@@ -84,25 +84,25 @@ int get_format(const char *format, va_list args, int *idx)
 	int consum = 0;
 
 	op_t ops[] = {
-		{'i', (int (*)(const char*, ...))int_print},
-		{'d', (int (*)(const char*, ...))int_print},
-		{'s', (int (*)(const char*, ...))str_print},
-		{'c', (int (*)(const char*, ...))char_print},
-		{'u', (int (*)(const char*, ...))unsign_print},
-		{'b', (int (*)(const char*, ...))bin_print},
-		{'o', (int (*)(const char*, ...))oct_print},
-		{'x', (int (*)(const char*, ...))hex_l_print},
-		{'X', (int (*)(const char*, ...))hex_h_print},
-		{'S', (int (*)(const char*, ...))str_np_print},
-		{'p', (int (*)(const char*, ...))adr_print},
-		{'r', (int (*)(const char*, ...))rev_print},
-		{'R', (int (*)(const char*, ...))rot_print},
-		{'%', (int (*)(const char*, ...))per_print},
-		{0, NULL}
+		{"i", (int (*)(const char*, ...))int_print},
+		{"d", (int (*)(const char*, ...))int_print},
+		{"s", (int (*)(const char*, ...))str_print},
+		{"c", (int (*)(const char*, ...))char_print},
+		{"u", (int (*)(const char*, ...))unsign_print},
+		{"b", (int (*)(const char*, ...))bin_print},
+		{"o", (int (*)(const char*, ...))oct_print},
+		{"x", (int (*)(const char*, ...))hex_l_print},
+		{"X", (int (*)(const char*, ...))hex_h_print},
+		{"S", (int (*)(const char*, ...))str_np_print},
+		{"p", (int (*)(const char*, ...))adr_print},
+		{"r", (int (*)(const char*, ...))rev_print},
+		{"R", (int (*)(const char*, ...))rot_print},
+		{"%", (int (*)(const char*, ...))per_print},
+		{NULL, NULL}
 	};
 	while (i < 14)
 	{
-		if (ops[i].op == format[*idx])
+		if (ops[i].op[0] == format[*idx])
 		{
 			res = ops[i].f(format, args, &consum);
 			*idx += consum;
