@@ -6,10 +6,9 @@
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-int str_print(const char *format, va_list args, int *idx)
+int str_print(const char* format, va_list args, int* idx)
 {
-	int i = 0;
-	char *arg = (char *)va_arg(args, char *);
+	char* arg = (char*)va_arg(args, char*);
 
 	(void)format;
 	if (arg == NULL)
@@ -23,13 +22,10 @@ int str_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (6);
 	}
-	while (arg[i] != '\0')
-	{
-		_putchar(arg[i]);
-		i++;
-	}
+	write(1, arg, strlen(arg));
 	(*idx)++;
-	return (i);
+	return (strlen(arg));
+}
 }
 /**
  * str_np_print - handle the %S in printf
