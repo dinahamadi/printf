@@ -11,7 +11,16 @@ int str_print(const char *format, va_list args, int *idx)
 	char *arg = (char *)va_arg(args, char*);
 
 	if (format == NULL || args == NULL)
-		return (-1);
+	{
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
+		(*idx)++;
+		return (6);
+	}
 	if (arg == NULL)
 	{
 		_putchar('(');
