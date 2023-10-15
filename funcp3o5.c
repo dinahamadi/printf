@@ -22,8 +22,6 @@ int str_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (6);
 	}
-	if (strlen(arg) > 1024)
-		return (-1);
 	write(1, arg, strlen(arg));
 	(*idx)++;
 	return (strlen(arg));
