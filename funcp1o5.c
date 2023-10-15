@@ -11,7 +11,7 @@ int int_print(const char *format, va_list args, int *idx)
 	int res = 0, i = 0, arg = va_arg(args, int), digit[10];
 
 	(void)format;
-	if (args == NULL)
+	if (args == NULL || arg == NULL)
 		return (-1);
 	if (arg == 0)
 	{
@@ -56,7 +56,7 @@ int unsign_print(const char *format, va_list args, int *idx)
 	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned  int), digit[10];
 
 	(void)format;
-	if (args == NULL)
+	if (args == NULL || arg == NULL)
 		return (-1);
 	if (arg == 0)
 	{
