@@ -12,13 +12,12 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	while (format[idx])
+	while (format[idx] && format[idx] != '\0')
 	{
 		if (format[idx] != '%')
 		{
-			_putchar(format[idx]);
+			count +=_putchar(format[idx]);
 			idx++;
-			count++;
 		}
 		else
 		{
