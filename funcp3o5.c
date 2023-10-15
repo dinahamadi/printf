@@ -11,7 +11,7 @@ int str_print(const char *format, va_list args, int *idx)
 	char *arg = (char *)va_arg(args, char*);
 
 	(void)format;
-	if (arg == NULL || *arg == '\0')
+	if (arg == NULL)
 	{
 		_putchar('(');
 		_putchar('n');

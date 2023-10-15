@@ -28,7 +28,7 @@ int int_print(const char *format, va_list args, int *idx)
 	{
 		_putchar('2');
 		arg = 147483648;
-		res += 2;
+		res ++;
 	}
 	while (arg > 0)
 	{
