@@ -13,7 +13,8 @@ int str_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (arg == NULL)
 	{
-		return (-1);
+		(*idx)++;
+		return (print_null());
 	}
 	write(1, arg, strlen(arg));
 	(*idx)++;
