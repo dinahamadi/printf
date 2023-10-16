@@ -8,7 +8,7 @@
  */
 int str_print(const char *format, va_list args, int *idx)
 {
-	char *arg = (char *)va_arg(args, char *);
+	char *arg = va_arg(args, char *);
 
 	(void)format;
 	if (arg == NULL)
