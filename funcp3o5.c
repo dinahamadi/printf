@@ -6,10 +6,11 @@
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-int str_print(__attribute__((unused)) const char *format, va_list args, int *idx)
+int str_print(__attribute__((unused)) const char *format,
+va_list args, int *idx)
 {
-	char *arg = (char *)va_arg(args, char*);
-		
+	char *arg = (char *)va_arg(args, char *);
+
 	if (arg == NULL)
 	{
 		_putchar('(');
@@ -47,10 +48,11 @@ int str_np_print(const char *format, va_list args, int *idx)
  * Return: the count of printed characters or -1 if failed.
  */
 
-int rev_print(__attribute__((unused)) const char *format, va_list args, int *idx)
+int rev_print(__attribute__((unused)) const char *format,
+va_list args, int *idx)
 {
 	int i = 0;
-	char* arg = (char*)va_arg(args, char*);
+	char *arg = (char *)va_arg(args, char *);
 
 	if (args == NULL)
 		return (-1);
