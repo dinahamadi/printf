@@ -59,12 +59,14 @@ int str_np_print(const char *format, va_list args, int *idx)
 			while (j > 0)
 			{
 				if (digit[--j] < 10)
-						_putchar('0' + digit[j]);
+					_putchar('0' + digit[j]);
 				else
-						_putchar('A' + (digit[j] % 10));
+					_putchar('A' + (digit[j] % 10));
 				res++;
 			}
 		}
+		else
+			res += write(1, &arg_str[i], 1);
 		i++;
 	}
 	(*idx)++;
