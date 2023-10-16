@@ -51,5 +51,5 @@ int precision_print(const char *format, va_list args, int wd, int *idx);
 int wd_width_print(const char *format, va_list args, int wd, int *idx);
 int prefix_print(const char *format, va_list args, int wd, int *idx);
 int space_print(const char *format, va_list args, int wd, int *idx);
-
+int print_null(void);
 #endif

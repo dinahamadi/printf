@@ -10,18 +10,11 @@ int str_print(const char *format, va_list args, int *idx)
 {
 	char *arg = (char *)va_arg(args, char *);
 
-	if (format == NULL)
-		return (-1);
-	if (arg == NULL )
+	(void)format;
+	if (arg == NULL)
 	{
-		_putchar('(');
-		_putchar('n');
-		_putchar('u');
-		_putchar('l');
-		_putchar('l');
-		_putchar(')');
 		(*idx)++;
-		return (6);
+		return (print_null());
 	}
 	write(1, arg, strlen(arg));
 	(*idx)++;
@@ -36,10 +29,45 @@ int str_print(const char *format, va_list args, int *idx)
  */
 int str_np_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	int res = 0, i = 0, j = 0;
+	char digit[1024];
+	char arg_str[1024], *arg = (char *)va_arg(args, char *);
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (arg == NULL)
+	{
+		(*idx)++;
+		return (print_null());
+	}
+	strncpy(arg_str, arg, 1023);
+	arg_str[1023] = '\0';
+	while (arg_str[i] != '\0')
+	{
+		if (((int)(arg_str[i]) < 32 && (int)(arg_str[i]) > 0)
+			|| ((int)(arg_str[i]) >= 127))
+		{
+			res += write(1, "\\x", 2);
+			j = 0;
+			while ((int)(arg_str[i]) > 0)
+			{
+				digit[j] = (int)(arg_str[i]) % 16;
+				j++;
+				arg_str[i] = (int)(arg_str[i]) / 16;
+			}
+			while (j > 0)
+			{
+				if (digit[--j] < 10)
+					_putchar('0' + digit[j]);
+				else
+					_putchar('A' + (digit[j] % 10));
+				res++;
+			}
+		}
+		res += write(1, &arg_str[i], 1);
+		i++;
+	}
+	(*idx)++;
+	return (res);
 }
 /**
  * rev_print - handle the %r in printf
@@ -78,4 +106,18 @@ int rot_print(const char *format, va_list args, int *idx)
 	(void)format;
 	(void)args;
 	return (1);
+}
+/**
+ * print_null - print (null)
+ * Return: 6.
+ */
+int print_null(void)
+{
+	_putchar('(');
+	_putchar('n');
+	_putchar('u');
+	_putchar('l');
+	_putchar('l');
+	_putchar(')');
+	return (6);
 }
