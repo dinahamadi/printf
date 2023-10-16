@@ -6,9 +6,9 @@
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-int bin_print(const char *format, va_list args, int *idx)
+int bin_print(const char *format, va_list args,int *idx)
 {
-	int res = 0, i = 0, arg = va_arg(args, int);
+	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned int);
 	char digit[1024];
 
 	(void)format;
@@ -18,10 +18,6 @@ int bin_print(const char *format, va_list args, int *idx)
 	{
 		_putchar('0');
 		res++;
-	}
-	if (arg < 0)
-	{
-		arg = (-1) * arg;
 	}
 	while (arg > 0)
 	{
