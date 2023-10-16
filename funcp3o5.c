@@ -56,17 +56,6 @@ int rev_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (args == NULL)
 		return (-1);
-	if(arg == NULL)
-	{
-		_putchar('(');
-		_putchar('l');
-		_putchar('l');
-		_putchar('u');
-		_putchar('n');
-		_putchar(')');
-		(*idx)++;
-		return (6);
-	}
 	i = strlen(arg);
 	while (i >= 0)
 	{
