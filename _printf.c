@@ -6,16 +6,15 @@
  */
 int _printf(const char *format, ...)
 {
-	int idx = 0, i = 0, count = 0, rtrn = 0;
+	int idx = 0, count = 0, rtrn = 0;
 
 	va_list(args);
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	while (format[idx])
+	while(format[idx] != '\0')
 	{
-		i = idx + 1;
-		if (format[idx] != '%' || format[i] == '%')
+		if (format[idx] != '%')
 		{
 			count += _putchar(format[idx]);
 			idx++;
