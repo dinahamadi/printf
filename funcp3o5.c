@@ -54,7 +54,7 @@ int rev_print(const char *format, va_list args, int *idx)
 	char* arg = (char*)va_arg(args, char*);
 
 	(void)format;
-	if (arg == NULL)
+	if (args == NULL || arg == NULL)
 	{
 		_putchar('(');
 		_putchar('l');
