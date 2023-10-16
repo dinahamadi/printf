@@ -8,25 +8,18 @@
  */
 int str_print(const char *format, va_list args, int *idx)
 {
-	int res = 0, i = 0;
-	char arg_str[1024];
-	char *arg = va_arg(args, char *);
+	char *arg = (char *)va_arg(args, char *);
+	char* str_arg = strncpy(str_arg, arg, 1023);
 
 	(void)format;
-
-	if (arg == NULL)
+	if (str_arg == NULL)
 	{
 		(*idx)++;
-		return print_null();
+		return (print_null());
 	}
-	strncpy(arg_str, arg, 1023);
-	arg_str[1023] = '\0';
-	while (arg_str[i] != '\0') {
-		res += _putchar(arg_str[i]);
-		i++;
-	}
+	write(1, arg, strlen(str_arg));
 	(*idx)++;
-	return res;
+	return (strlen(str_arg));
 }
 /**
  * str_np_print - handle the %S in printf
