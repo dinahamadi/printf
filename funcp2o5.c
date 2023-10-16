@@ -43,10 +43,30 @@ int bin_print(const char *format, va_list args,int *idx)
  */
 int oct_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned int);
+	char digit[1024];
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (args == NULL)
+		return (-1);
+	if (arg == 0)
+	{
+		_putchar('0');
+		res++;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 8;
+		i++;
+		arg /= 8;
+	}
+	while (i > 0)
+	{
+		_putchar('0' + digit[--i]);
+		res++;
+	}
+	(*idx)++;
+	return (res);
 }
 /**
  * hex_l_print - handle the %h in printf
