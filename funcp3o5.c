@@ -8,7 +8,9 @@
  */
 int str_print(const char *format, va_list args, int *idx)
 {
+	int i = 0;
 	char *arg = va_arg(args, char *);
+	char *str;
 
 	(void)format;
 	if (arg == NULL)
@@ -16,9 +18,18 @@ int str_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (print_null());
 	}
-	write(1, arg, strlen(arg));
+	str = malloc(strlen(arg) + 1);
+	if (str == NULL)
+		return (-1);
+	strcpy(str, arg);
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
+	free(str);
 	(*idx)++;
-	return (strlen(arg));
+	return (--i);
 }
 /**
  * str_np_print - handle the %S in printf
