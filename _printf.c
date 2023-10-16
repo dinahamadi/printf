@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (format[idx] && (format[idx] != '\0'))
 	{
-		if (format[idx] != '%')
+		if (format[idx] != '%' || format[idx] == '%')
 		{
 			count += _putchar(format[idx]);
 			idx++;
