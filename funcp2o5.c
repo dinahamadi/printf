@@ -151,8 +151,7 @@ int hex_h_print(const char *format, va_list args, int *idx)
  */
 int adr_print(const char *format, va_list args, int *idx)
 {
-	unsigned int res = 0, i = 0
-	void *arg = va_arg(args, void *);
+	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned int);
 	char digit[1024];
 
 	(void)format;
@@ -180,5 +179,4 @@ int adr_print(const char *format, va_list args, int *idx)
 	}
 	(*idx)++;
 	return (res);
-}
 }
