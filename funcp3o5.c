@@ -50,10 +50,28 @@ int str_np_print(const char *format, va_list args, int *idx)
 
 int rev_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	int i = 0;
+	char* arg = (char*)va_arg(args, char*);
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (arg == NULL)
+	{
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
+		(*idx)++;
+		return (6);
+	}
+	i = strlen(arg);
+	while (i >= 0)
+	{
+		_putchar(arg[i--]);
+	}
+	(*idx)++;
+	return (strlen(arg));
 }
 /**
  * rot_print - handle the %R in printf

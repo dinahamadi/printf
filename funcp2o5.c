@@ -33,7 +33,6 @@ int bin_print(const char *format, va_list args, int *idx)
 	(*idx)++;
 	return (res);
 }
-
 /**
  * oct_print - handle the %o in printf
  * @format: the first argument
