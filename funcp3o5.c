@@ -9,18 +9,16 @@
 int str_print(const char *format, va_list args, int *idx)
 {
 	char *arg = (char *)va_arg(args, char *);
-	char str_arg[1024];
 
-	strncpy(str_arg, arg, 1023);
 	(void)format;
-	if (str_arg == NULL)
+	if (arg == NULL)
 	{
 		(*idx)++;
 		return (print_null());
 	}
-	write(1, arg, strlen(str_arg));
+	write(1, arg, strlen(arg));
 	(*idx)++;
-	return (strlen(str_arg));
+	return (strlen(arg));
 }
 /**
  * str_np_print - handle the %S in printf
