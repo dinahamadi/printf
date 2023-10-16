@@ -159,12 +159,13 @@ int adr_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (args == NULL)
 		return (-1);
-	res += write(1, "0x", 2);
 	if (arg == 0)
 	{
-		_putchar('0');
-		res++;
+		res += write(1, "(nil)", 5);
+		(*idx)++;
+		return (res);
 	}
+	res += write(1, "0x", 2);
 	while (addr > 0)
 	{
 		digit[i] = addr % 16;
