@@ -8,10 +8,34 @@
  */
 int bin_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	int res = 0, i = 0, arg = va_arg(args, int);
+	char digit[1024];
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (args == NULL)
+		return (-1);
+	if (arg == 0)
+	{
+		_putchar('0');
+		res++;
+	}
+	if (arg < 0)
+	{
+		arg = (-1) * arg;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 2;
+		i++;
+		arg /= 2;
+	}
+	while (i > 0)
+	{
+		_putchar('0' + digit[--i]);
+		res++;
+	}
+	(*idx)++;
+	return (res);
 }
 
 /**
