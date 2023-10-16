@@ -113,6 +113,7 @@ int per_print(const char *format, va_list args, int *idx)
 	(void)format;
 	(void)args;
 	_putchar('%');
+	_putchar('%');
 	(*idx)++;
-	return (1);
+	return (2);
 }
