@@ -6,7 +6,7 @@
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-int bin_print(const char *format, va_list args,int *idx)
+int bin_print(const char *format, va_list args, int *idx)
 {
 	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned int);
 	char digit[1024];
@@ -151,8 +151,34 @@ int hex_h_print(const char *format, va_list args, int *idx)
  */
 int adr_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	unsigned int res = 0, i = 0
+	void *arg = va_arg(args, void *);
+	char digit[1024];
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (args == NULL)
+		return (-1);
+	res += write(1, "0x", 2);
+	if (arg == 0)
+	{
+		_putchar('0');
+		res++;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 16;
+		i++;
+		arg /= 16;
+	}
+	while (i > 0)
+	{
+		if (digit[--i] < 10)
+			_putchar('0' + digit[i]);
+		else
+			_putchar('a' + (digit[i] % 10));
+		res++;
+	}
+	(*idx)++;
+	return (res);
+}
 }
