@@ -11,7 +11,9 @@ int str_print(const char *format, va_list args, int *idx)
 	char *arg = (char *)va_arg(args, char *);
 
 	if (format == NULL)
-		return (-1);
+	{
+		return (print_null());
+	}
 	if (arg == NULL)
 	{
 		(*idx)++;
