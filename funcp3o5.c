@@ -56,6 +56,7 @@ int str_np_print(const char *format, va_list args, int *idx)
 			}
 			while (j > 0)
 			{
+				_putchar('0');
 				if (digit[--j] < 10)
 					_putchar('0' + digit[j]);
 				else
@@ -76,7 +77,6 @@ int str_np_print(const char *format, va_list args, int *idx)
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-
 int rev_print(const char *format, va_list args, int *idx)
 {
 	int i = 0;
