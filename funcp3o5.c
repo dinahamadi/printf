@@ -11,14 +11,17 @@ int str_print(const char *format, va_list args, int *idx)
 	char *arg = (char *)va_arg(args, char *);
 
 	(void)format;
-	if (arg == NULL || *arg == '\0')
+	if (arg == NULL)
 	{
 		(*idx)++;
 		return (print_null());
 	}
-	write(1, arg, strlen(arg));
-	(*idx)++;
-	return (strlen(arg));
+	else
+	{
+		write(1, arg, strlen(arg));
+		(*idx)++;
+		return (strlen(arg));
+	}
 }
 /**
  * str_np_print - handle the %S in printf
