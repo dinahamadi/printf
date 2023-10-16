@@ -9,23 +9,24 @@
 int str_print(const char *format, va_list args, int *idx)
 {
 	int res = 0, i = 0;
-	char arg_str[1024], *arg = (char *)va_arg(args, char *);
+	char arg_str[1024];
+	char *arg = va_arg(args, char *);
 
 	(void)format;
+
 	if (arg == NULL)
 	{
 		(*idx)++;
-		return (print_null());
+		return print_null();
 	}
 	strncpy(arg_str, arg, 1023);
 	arg_str[1023] = '\0';
-	while (arg_str[i] != '\0')
-	{
+	while (arg_str[i] != '\0') {
 		res += _putchar(arg_str[i]);
 		i++;
 	}
 	(*idx)++;
-	return (res);
+	return res;
 }
 /**
  * str_np_print - handle the %S in printf
