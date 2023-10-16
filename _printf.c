@@ -6,22 +6,22 @@
  */
 int _printf(const char *format, ...)
 {
-	int idx = 0, count = 0, rtrn = 0;
+	int idx = 0, count = 0, rtrn = 0, i = 0;
 
 	va_list(args);
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	while (format[idx] != '\0')
+	while (format[i] != '\0')
 	{
-		if (format[idx] != '%')
+		if (format[i] != '%' || format[++i] == '%')
 		{
-			count += _putchar(format[idx]);
+			count += _putchar(format[i]);
 			idx++;
 		}
 		else
 		{
-			if (format[++idx] == '\0')
+			if (format[i] == '\0')
 				return (-1);
 			rtrn = get_format(format, args, &idx);
 			if (rtrn == -1)
