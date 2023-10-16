@@ -10,10 +10,7 @@ int str_print(const char *format, va_list args, int *idx)
 {
 	char *arg = (char *)va_arg(args, char *);
 
-	if (format == NULL)
-	{
-		return (print_null());
-	}
+	(void)format;
 	if (arg == NULL)
 	{
 		(*idx)++;
