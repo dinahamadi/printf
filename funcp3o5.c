@@ -46,14 +46,14 @@ int str_np_print(const char *format, va_list args, int *idx)
 		if (((int)(arg_str[i]) < 32 && (int)(arg_str[i]) > 0)
 			|| ((int)(arg_str[i]) >= 127))
 		{
-			res += write(1, "\\x", 2);
+			write(1, "\\x", 2);
+			res += 2;
 			j = 0;
 			if ((int)(arg_str[i]) < 16)
 				res += _putchar('0');
 			while ((int)(arg_str[i]) > 0)
 			{
-				digit[j] = (int)(arg_str[i]) % 16;
-				j++;
+				digit[j++] = (int)(arg_str[i]) % 16;
 				arg_str[i] = (int)(arg_str[i]) / 16;
 			}
 			while (j > 0)
@@ -65,11 +65,10 @@ int str_np_print(const char *format, va_list args, int *idx)
 				res++;
 			}
 		}
-		res += write(1, &arg_str[i], 1);
 		i++;
 	}
 	(*idx)++;
-	return (--res);
+	return (res);
 }
 /**
  * rev_print - handle the %r in printf
