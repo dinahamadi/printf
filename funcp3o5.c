@@ -31,7 +31,7 @@ int str_np_print(const char *format, va_list args, int *idx)
 {
 	int res = 0, i = 0, j = 0;
 	char digit[1024];
-	char arg_str[1024], *arg = (char *)va_arg(args, char *);
+	char str[1024], *arg = (char *)va_arg(args, char *);
 
 	(void)format;
 	if (arg == NULL)
@@ -39,22 +39,20 @@ int str_np_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (print_null());
 	}
-	strncpy(arg_str, arg, 1023);
-	arg_str[1023] = '\0';
-	while (arg_str[i] != '\0')
+	strncpy(str, arg, 1023);
+	str[1023] = '\0';
+	while (str[i] != '\0')
 	{
-		if (((int)(arg_str[i]) < 32 && (int)(arg_str[i]) > 0)
-			|| ((int)(arg_str[i]) >= 127))
+		if (((int)(str[i]) < 32 && (int)(str[i]) > 0) || ((int)(str[i]) >= 127))
 		{
-			write(1, "\\x", 2);
-			res += 2;
+			res += write(1, "\\x", 2);
 			j = 0;
-			if ((int)(arg_str[i]) < 16)
+			if ((int)(str[i]) < 16)
 				res += _putchar('0');
-			while ((int)(arg_str[i]) > 0)
+			while ((int)(str[i]) > 0)
 			{
-				digit[j++] = (int)(arg_str[i]) % 16;
-				arg_str[i] = (int)(arg_str[i]) / 16;
+				digit[j++] = (int)(str[i]) % 16;
+				str[i] = (int)(str[i]) / 16;
 			}
 			while (j > 0)
 			{
@@ -66,7 +64,7 @@ int str_np_print(const char *format, va_list args, int *idx)
 			}
 		}
 		else
-			res += write(1, &arg_str[i], 1);
+			res += write(1, &str[i], 1);
 		i++;
 	}
 	(*idx)++;
