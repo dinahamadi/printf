@@ -77,10 +77,33 @@ int oct_print(const char *format, va_list args, int *idx)
  */
 int hex_l_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned int);
+	char digit[1024];
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (args == NULL)
+		return (-1);
+	if (arg == 0)
+	{
+		_putchar('0');
+		res++;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 16;
+		i++;
+		arg /= 16;
+	}
+	while (i > 0)
+	{
+		if (digit[--i] < 10)
+			_putchar('0' + digit[i]);
+		else
+			_putchar('a' + (digit[i] % 10));
+		res++;
+	}
+	(*idx)++;
+	return (res);
 }
 /**
  * hex_h_print - handle the %H in printf
@@ -91,10 +114,33 @@ int hex_l_print(const char *format, va_list args, int *idx)
  */
 int hex_h_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	unsigned int res = 0, i = 0, arg = va_arg(args, unsigned int);
+	char digit[1024];
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (args == NULL)
+		return (-1);
+	if (arg == 0)
+	{
+		_putchar('0');
+		res++;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 16;
+		i++;
+		arg /= 16;
+	}
+	while (i > 0)
+	{
+		if (digit[--i] < 10)
+			_putchar('0' + digit[i]);
+		else
+			_putchar('A' + (digit[i] % 10));
+		res++;
+	}
+	(*idx)++;
+	return (res);
 }
 /**
  * adr_print - handle the %p in printf
