@@ -99,7 +99,7 @@ int get_format(const char *format, va_list args, int *idx)
 		{"%", (int (*)(const char*, ...))per_print},
 		{NULL, NULL}
 	};
-	while (i < 14)
+	while (ops[i].op[0])
 	{
 		if (ops[i].op[0] == format[*idx])
 		{

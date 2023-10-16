@@ -97,9 +97,8 @@ int char_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (args == NULL)
 		return (-1);
-	_putchar(arg);
 	(*idx)++;
-	return (1);
+	return (_putchar(arg));
 }
 /**
  * per_print - handle the %% in printf
@@ -112,8 +111,6 @@ int per_print(const char *format, va_list args, int *idx)
 {
 	(void)format;
 	(void)args;
-	_putchar('%');
-	_putchar('%');
 	(*idx)++;
-	return (2);
+	return (_putchar('%'));
 }
