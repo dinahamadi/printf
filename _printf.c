@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 			count += _putchar(format[idx]);
 			idx++;
 		}
-		else
+		if (format[idx] == '%')
 		{
 			if (format[++idx] == '\0')
 				return (-1);
