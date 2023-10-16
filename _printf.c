@@ -6,7 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int idx = 0, count = 0, rtrn = 0;
+	int idx = 0, i = 0, count = 0, rtrn = 0;
 
 	va_list(args);
 	va_start(args, format);
@@ -14,7 +14,8 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (format[idx] && (format[idx] != '\0'))
 	{
-		if (format[idx] != '%' || format[idx] == '%')
+		i = idx + 1;
+		if (format[idx] != '%' || format[i] == '%')
 		{
 			count += _putchar(format[idx]);
 			idx++;
