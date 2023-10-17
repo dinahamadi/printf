@@ -37,7 +37,7 @@ int wd_width_print(const char *format, va_list args, int *idx)
 int prefix_print(const char *format, va_list args, int *idx)
 {
 	unsigned int arg = va_arg(args, unsigned int);
-	
+
 	if (args == NULL)
 		return (-1);
 	if (format[++(*idx)] == '\0')
