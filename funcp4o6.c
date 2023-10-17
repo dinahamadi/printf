@@ -43,7 +43,7 @@ int long_print(const char *format, va_list args, int *idx)
 		_putchar('0' + digit[--i]);
 		res++;
 	}
-	(*idx)++;
+	(*idx) += 2;
 	return (res);
 }
 /**
