@@ -91,8 +91,10 @@ int rev_print(const char *format, va_list args, int *idx)
 	i = strlen(arg);
 	while (i > 0)
 	{
-		_putchar(arg[i--]);
+		_putchar(arg[--i]);
 	}
+	if (strlen(arg) % 2 != 0)
+		_putchar(arg[i]);
 	(*idx)++;
 	return (strlen(arg));
 }
@@ -106,7 +108,7 @@ int rev_print(const char *format, va_list args, int *idx)
 int rot_print(const char *format, va_list args, int *idx)
 {
 	int i = 0;
-	char* arg = (char*)va_arg(args, char*);
+	char *arg = (char *)va_arg(args, char *);
 
 	(void)format;
 	if (args == NULL)
