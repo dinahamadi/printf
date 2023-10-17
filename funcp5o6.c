@@ -81,7 +81,7 @@ int space_print(const char *format, va_list args, int *idx)
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
 	if ((format[(*idx)] == '+'))
-		return (sign_print(format, args, idx));
+		return (1 + sign_print(format, args, idx));
 	i = (*idx) + 1;
 	if ((format[++i] == '%') && (format[++i] == ' '))
 	{
