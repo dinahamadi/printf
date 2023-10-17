@@ -102,7 +102,7 @@ int rev_print(const char *format, va_list args, int *idx)
  */
 int rot_print(const char *format, va_list args, int *idx)
 {
-	int i = 0;
+	unsigned int i = 0;
 	char *arg = (char *)va_arg(args, char *);
 
 	(void)format;
@@ -113,17 +113,15 @@ int rot_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (0);
 	}
-	i = strlen(arg);
-
-	while (i >= 0)
+	while (arg[i] != '\0')
 	{
-		if ((arg[i] >= 'a') && (arg[i] <= 'z'))
-			_putchar((arg[--i] + 13));
+		if ((arg[i] >= 97) && (arg[i] <= 122))
+			_putchar((arg[i++] + 13));
 		else
-			if ((arg[i] >= 'A') && (arg[i] <= 'Z'))
-			_putchar((arg[--i] - 13));
+			if ((arg[i] >= 65) && (arg[i++] <= 90))
+			_putchar((arg[i++] - 13));
 			else
-				_putchar(arg[--i]);
+				_putchar(arg[i++]);
 	}
 	(*idx)++;
 	return (strlen(arg));
