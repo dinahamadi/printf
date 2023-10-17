@@ -9,27 +9,27 @@
  */
 int long_print(const char *format, va_list args, int *idx)
 {
-	long int res = 0, i = 0, arg = va_arg(args, long int), digit[10];
+	long int res = 0, i = 0, arg = va_arg(args, long int), digit[24];
 
 	(void)format;
 	if (args == NULL)
 		return (-1);
-	if (arg == 0)
+	if (atoi(arg) == 0)
 	{
 		_putchar('0');
 		res++;
 	}
-	if (arg < 0)
+	if (atoi(arg) < 0)
 	{
 		_putchar('-');
 		arg = (-1) * arg;
 		res++;
 	}
-	while (arg > 0)
+	while (atoi(arg) > 0)
 	{
-		digit[i] = arg % 10;
+		digit[i] = atoi(arg) % 10;
 		i++;
-		arg /= 10;
+		atoi(arg) /= 10;
 	}
 	while (i > 0)
 	{
