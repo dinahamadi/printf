@@ -9,35 +9,10 @@
  */
 int long_print(const char *format, va_list args, int *idx)
 {
-	long int res = 0, i = 0, arg = va_arg(args, long int), digit[24];
-
+	(void)idx;
 	(void)format;
-	if (args == NULL)
-		return (-1);
-	if (atoi(arg) == 0)
-	{
-		_putchar('0');
-		res++;
-	}
-	if (atoi(arg) < 0)
-	{
-		_putchar('-');
-		arg = (-1) * arg;
-		res++;
-	}
-	while (atoi(arg) > 0)
-	{
-		digit[i] = atoi(arg) % 10;
-		i++;
-		atoi(arg) /= 10;
-	}
-	while (i > 0)
-	{
-		_putchar('0' + digit[--i]);
-		res++;
-	}
-	(*idx)++;
-	return (res);
+	(void)args;
+	return (1);
 }
 /**
  * short_print - handle the %h in printf
