@@ -9,41 +9,47 @@
  */
 int long_print(const char *format, va_list args, int *idx)
 {
-	int res = 0, i = 0, digit[10];
+	int res = 0;
 	long arg = va_arg(args, long);
-	
-	(void)format;
+
 	if (args == NULL)
+		return (-1);
+	if (format[++(*idx)] == '\0')
 		return (-1);
 	if (arg == 0)
 	{
+		(*idx)++;
+		return (_putchar('0'));
+	}
+	switch (format[(*idx)++])
+	{
+	case 'o':
 		_putchar('0');
-		res++;
+		res = 1 + write_octal(arg);
+		break;
+	case 'x':
+		write(1, "0x", 2);
+		res = 2 + write_l_hex(arg);
+		break;
+	case 'X':
+		write(1, "0X", 2);
+		res = 2 + write_h_hex(arg);
+		break;
+	case 'i':
+		write(1, "0X", 2);
+		res = 2 + write_h_hex(arg);
+		break;
+	case 'd':
+		write(1, "0X", 2);
+		res = 2 + write_h_hex(arg);
+		break;
+	case 'u':
+		write(1, "0X", 2);
+		res = 2 + write_h_hex(arg);
+		break;
+	default:
+		return (-1);
 	}
-	if (arg < 0)
-	{
-		_putchar('-');
-		arg = (-1) * arg;
-		res++;
-	}
-	if (arg == INT_MIN)
-	{
-		_putchar('2');
-		arg = 147483648;
-		res++;
-	}
-	while (arg > 0)
-	{
-		digit[i] = arg % 10;
-		i++;
-		arg /= 10;
-	}
-	while (i > 0)
-	{
-		_putchar('0' + digit[--i]);
-		res++;
-	}
-	(*idx) += 2;
 	return (res);
 }
 /**

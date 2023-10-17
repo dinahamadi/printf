@@ -4,7 +4,7 @@
  * @arg: the decimal value
  * Return: the count of printed characters.
  */
-int write_octal(unsigned int arg)
+int write_octal(unsigned long arg)
 {
 	int res = 0, i = 0;
 	char digit[1024];
@@ -25,7 +25,7 @@ int write_octal(unsigned int arg)
  * @arg: the decimal value
  * Return: the count of printed characters.
  */
-int write_h_hex(unsigned int arg)
+int write_h_hex(unsigned long arg)
 {
 	int res = 0, i = 0;
 	char digit[1024];
@@ -50,7 +50,7 @@ int write_h_hex(unsigned int arg)
  * @arg: the decimal value
  * Return: the count of printed characters.
  */
-int write_l_hex(unsigned int arg)
+int write_l_hex(unsigned long arg)
 {
 	int res = 0, i = 0;
 	char digit[1024];
