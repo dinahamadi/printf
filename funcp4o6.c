@@ -9,7 +9,6 @@
  */
 int long_print(const char *format, va_list args, int *idx)
 {
-	int res = 0;
 	long arg = va_arg(args, long);
 
 	if (args == NULL)
@@ -25,32 +24,22 @@ int long_print(const char *format, va_list args, int *idx)
 	{
 	case 'o':
 		_putchar('0');
-		res = 1 + write_octal(arg);
-		break;
+		return (1 + write_octal(arg));
 	case 'x':
 		write(1, "0x", 2);
-		res = 2 + write_l_hex(arg);
-		break;
+		return (2 + write_l_hex(arg));
 	case 'X':
 		write(1, "0X", 2);
-		res = 2 + write_h_hex(arg);
-		break;
+		return (2 + write_h_hex(arg));
 	case 'i':
-		write(1, "0X", 2);
-		res = 2 + write_h_hex(arg);
-		break;
+		return (1);
 	case 'd':
-		write(1, "0X", 2);
-		res = 2 + write_h_hex(arg);
-		break;
+		return (1);
 	case 'u':
-		write(1, "0X", 2);
-		res = 2 + write_h_hex(arg);
-		break;
+		return (1);
 	default:
 		return (-1);
 	}
-	return (res);
 }
 /**
  * short_print - handle the %h in printf

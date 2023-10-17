@@ -9,8 +9,8 @@ int write_octal(unsigned long arg)
 	int res = 0, i = 0;
 	char digit[1024];
 
-	if (arg == UINT_MAX)
-		return (write(1, "37777777777", 11));
+	if (arg == ULONG_MAX)
+		return (write(1, "1777777777777777777777", 22));
 	while (arg > 0)
 	{
 		digit[i++] = arg % 8;
