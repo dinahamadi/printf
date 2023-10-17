@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 int get_format(const char *format, va_list args, int *idx)
 {
 	int i = 0, res = 0;
-	int consum = 0;
+	int consum = *idx;
 
 	op_t ops[] = {
 		{"i", (int (*)(const char*, ...))int_print},
@@ -80,7 +80,7 @@ int get_format(const char *format, va_list args, int *idx)
 		if (ops[i].op[0] == format[*idx])
 		{
 			res = ops[i].f(format, args, &consum);
-			*idx += consum;
+			*idx = consum;
 			return (res);
 		}
 		i++;
