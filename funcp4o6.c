@@ -113,7 +113,7 @@ int l_align_print(const char *format, va_list args, int *idx)
  */
 int sign_print(const char *format, va_list args, int *idx)
 {
-	int res = 0, i = 0, arg;
+	int res = 0, arg;
 
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
