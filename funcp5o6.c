@@ -36,6 +36,7 @@ int wd_width_print(const char *format, va_list args, int *idx)
  */
 int prefix_print(const char *format, va_list args, int *idx)
 {
+	int res = 0;
 	unsigned int arg = va_arg(args, unsigned int);
 
 	if (args == NULL)
@@ -53,18 +54,22 @@ int prefix_print(const char *format, va_list args, int *idx)
 	case 'o':
 		(*idx)++;
 		_putchar('0');
-		return (1 + write_octal(arg));
+		res = 1 + write_octal(arg);
+		break;
 	case 'x':
 		write(1, "0x", 2);
 		(*idx)++;
-		return (2 + write_l_hex(arg));
+		res = 2 + write_l_hex(arg);
+		break;
 	case 'X':
 		write(1, "0X", 2);
 		(*idx)++;
-		return (2 + write_h_hex(arg));
+		res = 2 + write_h_hex(arg);
+		break;
 	default:
 		return (-1);
 	}
+	return (res);
 }
 /**
  * space_print - handle the % followed by space in printf

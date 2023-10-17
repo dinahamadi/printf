@@ -6,7 +6,7 @@
  */
 int write_octal(unsigned int arg)
 {
-	unsigned int res = 0, i = 0;
+	int res = 0, i = 0;
 	char digit[1024];
 
 	while (arg > 0)
@@ -15,11 +15,8 @@ int write_octal(unsigned int arg)
 		arg /= 8;
 	}
 	while (i > 0)
-	{
-		_putchar('0' + digit[--i]);
-		res++;
-	}
-	return (++res);
+		res += _putchar('0' + digit[--i]);
+	return (res);
 }
 /**
  * write_h_hex - helper of %X

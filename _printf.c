@@ -14,12 +14,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (format[idx] != '\0')
 	{
-		if (format[idx] != '%')
-		{
-			count += _putchar(format[idx]);
-			idx++;
-		}
-		else
+		if (format[--idx] != '\'' && format[++idx] == '%')
 		{
 			if (format[++idx] == '\0')
 				return (-1);
@@ -32,6 +27,11 @@ int _printf(const char *format, ...)
 			if (rtrn == -1)
 				return (-1);
 			count += rtrn;
+		}
+		else
+		{
+			count += _putchar(format[idx]);
+			idx++;
 		}
 	}
 	va_end(args);
