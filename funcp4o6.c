@@ -34,10 +34,8 @@ int long_print(const char *format, va_list args, int *idx)
 		return (write_long(arg));
 	case 'u':
 		return (write_ulong((unsigned long)arg));
-	case '\n':
-		return (write(1, "%\n", 2));
 	default:
-		return (-1);
+		return (write(1, "%\n", 2));
 	}
 }
 /**
@@ -74,10 +72,8 @@ int short_print(const char *format, va_list args, int *idx)
 		return (write_long(arg));
 	case 'u':
 		return (write_ulong((unsigned long)arg));
-	case '\n':
-		return (write(1, "%\n", 2));
 	default:
-		return (-1);
+		return (write(1, "%\n", 2));
 	}
 }
 /**
