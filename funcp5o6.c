@@ -34,7 +34,7 @@ int wd_width_print(const char *format, va_list args, int *idx)
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-int prefix_print(const char *format, va_list args, int *idx)
+int prefix_print(const char* format, va_list args, int* idx)
 {
 	int res = 0;
 	unsigned int arg = va_arg(args, unsigned int);
@@ -48,7 +48,6 @@ int prefix_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (_putchar('0'));
 	}
-	(*idx)++;
 	switch (format[(*idx)])
 	{
 	case 'o':
@@ -57,16 +56,17 @@ int prefix_print(const char *format, va_list args, int *idx)
 		res = 1 + write_octal(arg);
 		break;
 	case 'x':
-		write(1, "0x", 2);
 		(*idx)++;
+		write(1, "0x", 2);
 		res = 2 + write_l_hex(arg);
 		break;
 	case 'X':
-		write(1, "0X", 2);
 		(*idx)++;
+		write(1, "0X", 2);
 		res = 2 + write_h_hex(arg);
 		break;
 	default:
+		printf("default called");
 		return (-1);
 	}
 	return (res);

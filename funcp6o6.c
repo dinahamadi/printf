@@ -9,6 +9,8 @@ int write_octal(unsigned int arg)
 	int res = 0, i = 0;
 	char digit[1024];
 
+	if (arg == UINT_MAX)
+		return (write(1, "37777777777", 11));
 	while (arg > 0)
 	{
 		digit[i++] = arg % 8;
@@ -25,7 +27,7 @@ int write_octal(unsigned int arg)
  */
 int write_h_hex(unsigned int arg)
 {
-	unsigned int res = 0, i = 0;
+	int res = 0, i = 0;
 	char digit[1024];
 
 	while (arg > 0)
@@ -41,7 +43,7 @@ int write_h_hex(unsigned int arg)
 			_putchar('A' + (digit[i] % 10));
 		res++;
 	}
-	return (++res);
+	return (+res);
 }
 /**
  * write_l_hex - helper of %x
@@ -50,7 +52,7 @@ int write_h_hex(unsigned int arg)
  */
 int write_l_hex(unsigned int arg)
 {
-	unsigned int res = 0, i = 0;
+	int res = 0, i = 0;
 	char digit[1024];
 
 	while (arg > 0)
@@ -66,5 +68,5 @@ int write_l_hex(unsigned int arg)
 			_putchar('a' + (digit[i] % 10));
 		res++;
 	}
-	return (++res);
+	return (+res);
 }
