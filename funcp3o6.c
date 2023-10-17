@@ -119,7 +119,7 @@ int rot_print(const char *format, va_list args, int *idx)
 			_putchar((arg[i++] + 13));
 		else
 			if ((arg[i] >= 65) && (arg[i++] <= 90))
-			_putchar((arg[i++] - 13));
+			_putchar((arg[i++] + 13));
 			else
 				_putchar(arg[i++]);
 	}
