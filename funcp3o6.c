@@ -88,6 +88,8 @@ int rev_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (args == NULL)
 		return (-1);
+	if (*arg == '\0')
+		return (0);
 	i = strlen(arg);
 	while (i >= 0)
 	{
@@ -105,10 +107,19 @@ int rev_print(const char *format, va_list args, int *idx)
  */
 int rot_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
+	int i = 0;
+	char* arg = (char*)va_arg(args, char*);
+
 	(void)format;
-	(void)args;
-	return (1);
+	if (args == NULL)
+		return (-1);
+	i = strlen(arg);
+	while (i >= 0)
+	{
+		_putchar(arg[i--]);
+	}
+	(*idx)++;
+	return (strlen(arg));
 }
 /**
  * print_null - print (null)
