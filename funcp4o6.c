@@ -47,7 +47,7 @@ int long_print(const char *format, va_list args, int *idx)
  */
 int short_print(const char *format, va_list args, int *idx)
 {
-	short arg = va_arg(args, short);
+	int arg = va_arg(args, int);
 
 	if (args == NULL)
 		return (-1);
