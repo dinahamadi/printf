@@ -90,7 +90,7 @@ int rev_print(const char *format, va_list args, int *idx)
 		return (-1);
 	i = strlen(arg);
 	while (i > 0)
-		_putchar(arg[i--]);
+		_putchar(arg[--i]);
 	if (strlen(arg) % 2 != 0)
 		_putchar(arg[i]);
 	(*idx)++;
