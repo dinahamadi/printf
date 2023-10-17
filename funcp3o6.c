@@ -11,9 +11,9 @@ int str_print(const char *format, va_list args, int *idx)
 	char *arg = (char *)va_arg(args, char *);
 
 	(void)format;
-	if (args == NULL)
+	if (args == NULL|| arg[0] == '\0')
 		return (-1);
-	if (arg == NULL || arg[0] == '\0')
+	if (arg == NULL)
 	{
 		(*idx)++;
 		return (print_null());
