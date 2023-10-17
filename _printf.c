@@ -12,8 +12,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	if (format[0] == '\0')
-		return (0);
 	while (format[idx] != '\0')
 	{
 		if (format[idx] != '%')
@@ -77,6 +75,7 @@ int get_format(const char *format, va_list args, int *idx)
 		{" ", (int (*)(const char*, ...))space_print},
 		{NULL, NULL}
 	};
+	consum = (*idx);
 	while (ops[i].op[0])
 	{
 		if (ops[i].op[0] == format[*idx])
