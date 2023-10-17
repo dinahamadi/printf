@@ -48,6 +48,7 @@ int prefix_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (_putchar('0'));
 	}
+	(*idx)++;
 	switch (format[(*idx)])
 	{
 	case 'o':
