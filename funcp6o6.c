@@ -73,7 +73,8 @@ int write_l_hex(unsigned long arg)
 
 int write_long(long arg)
 {
-	int res = 0, digit[24];
+	int res = 0, i = 0, digit[24];
+
 	if (arg < 0)
 	{
 		_putchar('-');
@@ -101,5 +102,6 @@ int write_long(long arg)
 }
 int write_ulong(long arg)
 {
+	(void)arg;
 	return (1);
 }
