@@ -23,8 +23,7 @@ int long_print(const char *format, va_list args, int *idx)
 	switch (format[(*idx)++])
 	{
 	case 'o':
-		_putchar('0');
-		return (1 + write_octal(arg));
+		return (write_octal(arg));
 	case 'x':
 		write(1, "0x", 2);
 		return (2 + write_l_hex(arg));
