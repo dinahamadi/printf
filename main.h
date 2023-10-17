@@ -41,7 +41,7 @@ int adr_print(const char *format, va_list args, int *idx);
 int rev_print(const char *format, va_list args, int *idx);
 int rot_print(const char *format, va_list args, int *idx);
 int per_print(const char *format, va_list args, int *idx);
-int long_print(const char *format, va_list args,int *idx);
+int long_print(const char *format, va_list args, int *idx);
 int short_print(const char *format, va_list args, int *idx);
 int zero_padd_print(const char *format, va_list args, int *idx);
 int l_align_print(const char *format, va_list args, int *idx);
