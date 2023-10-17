@@ -54,5 +54,7 @@ int print_null(void);
 int write_octal(unsigned long arg);
 int write_l_hex(unsigned long arg);
 int write_h_hex(unsigned long arg);
+int write_long(long arg);
+int write_ulong(long arg);
 
 #endif
