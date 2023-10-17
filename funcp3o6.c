@@ -10,7 +10,8 @@ int str_print(const char *format, va_list args, int *idx)
 {
 	char *arg = (char *)va_arg(args, char *);
 
-	if (args == NULL || format == NULL)
+	(void)format;
+	if (args == NULL)
 		return (-1);
 	if (arg == NULL)
 	{
@@ -115,7 +116,10 @@ int rot_print(const char *format, va_list args, int *idx)
 	i = strlen(arg);
 	while (i >= 0)
 	{
-		_putchar(arg[i--]);
+		if((arg[i] > 'a') && (arg[i] < 'z'))
+			_putchar(arg[i--] + 13);
+		if ((arg[i] > 'A') && (arg[i] < 'Z'))
+			_putchar(arg[i--] - 13);
 	}
 	(*idx)++;
 	return (strlen(arg));
