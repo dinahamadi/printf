@@ -76,8 +76,7 @@ int prefix_print(const char *format, va_list args, int *idx)
  */
 int space_print(const char *format, va_list args, int *idx)
 {
-	int res = 0, i = 0, digit[10];
-	long arg;
+	int res = 0, i = 0, digit[10], arg;
 
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
@@ -91,7 +90,7 @@ int space_print(const char *format, va_list args, int *idx)
 	}
 	if (((format[(*idx)]) == 'd') || ((format[(*idx)]) == 'i'))
 	{
-		arg = va_arg(args, long);
+		arg = va_arg(args, int);
 		if (arg == 0)
 		{
 			(*idx)++;
