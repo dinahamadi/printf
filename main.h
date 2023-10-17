@@ -51,4 +51,8 @@ int wd_width_print(const char *format, va_list args, int *idx);
 int prefix_print(const char *format, va_list args, int *idx);
 int space_print(const char *format, va_list args, int *idx);
 int print_null(void);
+int write_octal(unsigned int arg);
+int write_l_hex(unsigned int arg);
+int write_h_hex(unsigned int arg);
+
 #endif
