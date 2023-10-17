@@ -33,7 +33,7 @@ int long_print(const char *format, va_list args, int *idx)
 	case 'd':
 		return (write_long(arg));
 	case 'u':
-		return (write_ulong(arg));
+		return (write_ulong((unsigned long)arg));
 	default:
 		return (-1);
 	}

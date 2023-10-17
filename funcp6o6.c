@@ -70,7 +70,11 @@ int write_l_hex(unsigned long arg)
 	}
 	return (+res);
 }
-
+/**
+ * write_long - helper of %li and %ld
+ * @arg: the long value
+ * Return: the count of printed characters.
+ */
 int write_long(long arg)
 {
 	int res = 0, i = 0, digit[24];
@@ -100,8 +104,31 @@ int write_long(long arg)
 	}
 	return (res);
 }
-int write_ulong(long arg)
+/**
+ * write_ulong - helper of %lu
+ * @arg: the unsigned long value
+ * Return: the count of printed characters.
+ */
+int write_ulong(unsigned long arg)
 {
-	(void)arg;
-	return (1);
+	int res = 0, i = 0, digit[24];
+
+	if (arg == ULONG_MAX)
+	{
+		_putchar('1');
+		arg = 8446744073709551615;
+		res++;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 10;
+		i++;
+		arg /= 10;
+	}
+	while (i > 0)
+	{
+		_putchar('0' + digit[--i]);
+		res++;
+	}
+	return (res);
 }
