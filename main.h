@@ -27,7 +27,6 @@ typedef struct op
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int get_flag(const char *format, va_list args, int *idx);
 int get_format(const char *format, va_list args, int *idx);
 int int_print(const char *format, va_list args, int *idx);
 int str_print(const char *format, va_list args, int *idx);
@@ -42,14 +41,14 @@ int adr_print(const char *format, va_list args, int *idx);
 int rev_print(const char *format, va_list args, int *idx);
 int rot_print(const char *format, va_list args, int *idx);
 int per_print(const char *format, va_list args, int *idx);
-int long_print(const char *format, va_list args, int wd, int *idx);
-int short_print(const char *format, va_list args, int wd, int *idx);
-int zero_padd_print(const char *format, va_list args, int wd, int *idx);
-int l_align_print(const char *format, va_list args, int wd, int *idx);
-int sign_print(const char *format, va_list args, int wd, int *idx);
-int precision_print(const char *format, va_list args, int wd, int *idx);
-int wd_width_print(const char *format, va_list args, int wd, int *idx);
-int prefix_print(const char *format, va_list args, int wd, int *idx);
-int space_print(const char *format, va_list args, int wd, int *idx);
+int long_print(const char *format, va_list args,int *idx);
+int short_print(const char *format, va_list args, int *idx);
+int zero_padd_print(const char *format, va_list args, int *idx);
+int l_align_print(const char *format, va_list args, int *idx);
+int sign_print(const char *format, va_list args, int *idx);
+int precision_print(const char *format, va_list args, int *idx);
+int wd_width_print(const char *format, va_list args, int *idx);
+int prefix_print(const char *format, va_list args, int *idx);
+int space_print(const char *format, va_list args, int *idx);
 int print_null(void);
 #endif

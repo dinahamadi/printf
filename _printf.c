@@ -21,9 +21,14 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			if (format[++idx] == '\0' || ((format[idx] == ' ') && (format[++idx] == '\0')))
+			if (format[++idx] == '\0')
 				return (-1);
 			rtrn = get_format(format, args, &idx);
+			if (rtrn == -2)
+			{
+				count += 2;
+				continue;
+			}
 			if (rtrn == -1)
 				return (-1);
 			count += rtrn;
@@ -33,50 +38,12 @@ int _printf(const char *format, ...)
 	return (count);
 }
 /**
- * get_flag - handle the flag after the % in printf
- * @format: the first argument
- * @args: all arguments
- * @idx: the index
- * Return: the count of printed characters or -1 if failed.
- */
-int get_flag(const char *format, va_list args, int *idx)
-{
-	int i = 0, wd = 0;
-
-	op_t flag[] = {
-		{"l", (int (*)(const char*, ...))long_print},
-		{"h", (int (*)(const char*, ...))short_print},
-		{"0", (int (*)(const char*, ...))zero_padd_print},
-		{"-", (int (*)(const char*, ...))l_align_print},
-		{"+", (int (*)(const char*, ...))sign_print},
-		{".", (int (*)(const char*, ...))precision_print},
-		{"*", (int (*)(const char*, ...))wd_width_print},
-		{"#", (int (*)(const char*, ...))prefix_print},
-		{" ", (int (*)(const char*, ...))space_print},
-		{NULL, NULL}
-	};
-	if (isdigit(format[*idx]) != 0 && (atoi(&format[*idx]) != 0))
-	{
-		wd = atoi(&format[*idx]);
-		(*idx)++;
-	}
-	while (i < 10)
-	{
-		if (flag[i].op[0] == format[*idx])
-			return (flag[i].f(format, args, wd, &idx));
-		i++;
-	}
-	return (-1);
-}
-
-/**
  * get_format - handle the flag after the % in printf
  * @format: the first argument
  * @args : all arguments
  * @idx: the index
  * Return: the count of printed characters or -1 if failed.
  */
-
 int get_format(const char *format, va_list args, int *idx)
 {
 	int i = 0, res = 0;
@@ -97,6 +64,15 @@ int get_format(const char *format, va_list args, int *idx)
 		{"r", (int (*)(const char*, ...))rev_print},
 		{"R", (int (*)(const char*, ...))rot_print},
 		{"%", (int (*)(const char*, ...))per_print},
+		{"l", (int (*)(const char*, ...))long_print},
+		{"h", (int (*)(const char*, ...))short_print},
+		{"0", (int (*)(const char*, ...))zero_padd_print},
+		{"-", (int (*)(const char*, ...))l_align_print},
+		{"+", (int (*)(const char*, ...))sign_print},
+		{".", (int (*)(const char*, ...))precision_print},
+		{"*", (int (*)(const char*, ...))wd_width_print},
+		{"#", (int (*)(const char*, ...))prefix_print},
+		{" ", (int (*)(const char*, ...))space_print},
 		{NULL, NULL}
 	};
 	while (ops[i].op[0])
