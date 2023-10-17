@@ -29,11 +29,11 @@ int long_print(const char *format, va_list args, int *idx)
 	case 'X':
 		return (write_h_hex(arg));
 	case 'i':
-		return (1);
+		return (write_long(arg));
 	case 'd':
-		return (1);
+		return (write_long(arg));
 	case 'u':
-		return (1);
+		return (write_ulong(arg));
 	default:
 		return (-1);
 	}

@@ -70,3 +70,36 @@ int write_l_hex(unsigned long arg)
 	}
 	return (+res);
 }
+
+int write_long(long arg)
+{
+	int res = 0, digit[24];
+	if (arg < 0)
+	{
+		_putchar('-');
+		arg = (-1) * arg;
+		res++;
+	}
+	if (arg == LONG_MIN)
+	{
+		_putchar('2');
+		arg = 147483646L;
+		res++;
+	}
+	while (arg > 0)
+	{
+		digit[i] = arg % 10;
+		i++;
+		arg /= 10;
+	}
+	while (i > 0)
+	{
+		_putchar('0' + digit[--i]);
+		res++;
+	}
+	return (res);
+}
+int write_ulong(long arg)
+{
+	return (1);
+}
