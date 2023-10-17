@@ -76,7 +76,7 @@ int prefix_print(const char *format, va_list args, int *idx)
  */
 int space_print(const char *format, va_list args, int *idx)
 {
-	int res = 0, i = 0, digit[10], arg;
+	int res = 0, i = 0, arg;
 
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
@@ -101,25 +101,35 @@ int space_print(const char *format, va_list args, int *idx)
 			res += _putchar('-');
 			if (arg == INT_MIN)
 			{
-				_putchar('2');
-					arg = 147483648;
-					res++;
+				res += _putchar('2');
+				arg = 147483648;
 			}
 			else
 				arg = (-1) * arg;
 		}
 		else
 			res += _putchar(' ');
-		i = 0;
-		while (arg > 0)
-		{
-			digit[i++] = arg % 10;
-			arg /= 10;
-		}
-		while (i > 0)
-			res += _putchar('0' + digit[--i]);
+		res += print_pos_arg(arg);
 		(*idx)++;
 		return (res);
 	}
 	return (-1);
+}
+/**
+ * print_pos_arg - help print arg if positive
+ * @arg: the positive argument
+ * Return: the count of printed characters.
+ */
+int print_pos_arg(int arg)
+{
+	int res = 0, i = 0, digit[10];
+
+	while (arg > 0)
+	{
+		digit[i++] = arg % 10;
+		arg /= 10;
+	}
+	while (i > 0)
+		res += _putchar('0' + digit[--i]);
+	return (res);
 }
