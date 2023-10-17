@@ -111,12 +111,9 @@ int rot_print(const char *format, va_list args, int *idx)
 	char *arg = (char *)va_arg(args, char *);
 
 	(void)format;
-	if (arg == NULL)
-	{
-		(*idx)++;
-		return (print_null());
-	}
-	if (*arg == '\0')
+	if (args == NULL)
+		return (-1);
+	if (arg[0] == '\0')
 	{
 		(*idx)++;
 		return (0);
