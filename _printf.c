@@ -75,7 +75,6 @@ int get_format(const char *format, va_list args, int *idx)
 		{" ", (int (*)(const char*, ...))space_print},
 		{NULL, NULL}
 	};
-	consum = (*idx);
 	while (ops[i].op[0])
 	{
 		if (ops[i].op[0] == format[*idx])
