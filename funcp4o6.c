@@ -47,10 +47,34 @@ int long_print(const char *format, va_list args, int *idx)
  */
 int short_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
-	(void)format;
-	(void)args;
-	return (1);
+	short arg = va_arg(args, short);
+
+	if (args == NULL)
+		return (-1);
+	if (format[++(*idx)] == '\0')
+		return (-1);
+	if (arg == 0)
+	{
+		(*idx)++;
+		return (_putchar('0'));
+	}
+	switch (format[(*idx)++])
+	{
+	case 'o':
+		return (write_octal(arg));
+	case 'x':
+		return (write_l_hex(arg));
+	case 'X':
+		return (write_h_hex(arg));
+	case 'i':
+		return (write_long(arg));
+	case 'd':
+		return (write_long(arg));
+	case 'u':
+		return (write_ulong((unsigned long)arg));
+	default:
+		return (-1);
+	}
 }
 /**
  * zero_padd_print - handle the %0 in printf
