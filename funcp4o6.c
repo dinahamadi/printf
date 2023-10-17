@@ -25,11 +25,9 @@ int long_print(const char *format, va_list args, int *idx)
 	case 'o':
 		return (write_octal(arg));
 	case 'x':
-		write(1, "0x", 2);
-		return (2 + write_l_hex(arg));
+		return (write_l_hex(arg));
 	case 'X':
-		write(1, "0X", 2);
-		return (2 + write_h_hex(arg));
+		return (write_h_hex(arg));
 	case 'i':
 		return (1);
 	case 'd':
