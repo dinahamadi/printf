@@ -87,8 +87,8 @@ int write_long(long arg)
 	}
 	if (arg == LONG_MIN)
 	{
-		_putchar('2');
-		arg = 147483646L;
+		_putchar('9');
+		arg = 223372036854775808;
 		res++;
 	}
 	while (arg > 0)
