@@ -88,10 +88,8 @@ int rev_print(const char *format, va_list args, int *idx)
 	(void)format;
 	if (args == NULL)
 		return (-1);
-	if (*arg == '\0')
-		return (0);
 	i = strlen(arg);
-	while (i >= 0)
+	while (i > 0)
 	{
 		_putchar(arg[i--]);
 	}
