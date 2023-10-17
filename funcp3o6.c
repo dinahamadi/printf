@@ -116,6 +116,11 @@ int rot_print(const char *format, va_list args, int *idx)
 		(*idx)++;
 		return (print_null());
 	}
+	if (*arg == '\0')
+	{
+		(*idx)++;
+		return (0);
+	}
 	i = strlen(arg);
 	while (i >= 0)
 	{
