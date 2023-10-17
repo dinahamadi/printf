@@ -76,15 +76,22 @@ int prefix_print(const char *format, va_list args, int *idx)
  */
 int space_print(const char *format, va_list args, int *idx)
 {
-	int res = 0, i = 0, arg, digit[10];
+	int res = 0, i = 0, digit[10];
+	long arg;
 
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
-	if ((format[(*idx)]) == '%')
-		return ((-1) * write(1, "% ", 2));
+	if ((format[(*idx)] == '+'))
+		return (sign_print(format, args, idx));
+	i = (*idx) + 1;
+	if ((format[++i] == '%') && (format[++i] == ' '))
+	{
+		(*idx) = i;
+		return (write(1, "% % ", 4));
+	}
 	if (((format[(*idx)]) == 'd') || ((format[(*idx)]) == 'i'))
 	{
-		arg = va_arg(args, int);
+		arg = va_arg(args, long);
 		if (arg == 0)
 		{
 			(*idx)++;
@@ -92,16 +99,12 @@ int space_print(const char *format, va_list args, int *idx)
 		}
 		if (arg < 0)
 		{
-			if (arg == INT_MIN)
-			{
-				(*idx)++;
-				return (write(1, "-2147483648", 11));
-			}
 			res += _putchar('-');
 			arg = (-1) * arg;
 		}
 		else
 			res += _putchar(' ');
+		i = 0;
 		while (arg > 0)
 		{
 			digit[i++] = arg % 10;
