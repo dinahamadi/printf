@@ -99,7 +99,14 @@ int space_print(const char *format, va_list args, int *idx)
 		if (arg < 0)
 		{
 			res += _putchar('-');
-			arg = (-1) * arg;
+			if (arg == INT_MIN)
+			{
+				_putchar('2');
+					arg = 147483648;
+					res++;
+			}
+			else
+				arg = (-1) * arg;
 		}
 		else
 			res += _putchar(' ');
