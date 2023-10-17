@@ -117,6 +117,8 @@ int sign_print(const char *format, va_list args, int *idx)
 
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
+	if ((format[(*idx)] == ' '))
+		++(*idx);
 	if (((format[(*idx)]) == 'd') || ((format[(*idx)]) == 'i'))
 	{
 		arg = va_arg(args, int);
