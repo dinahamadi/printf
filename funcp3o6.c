@@ -116,9 +116,9 @@ int rot_print(const char *format, va_list args, int *idx)
 	i = strlen(arg);
 	while (i >= 0)
 	{
-		if((arg[i] > 'a') && (arg[i] < 'z'))
+		if ((arg[i] >= 'a') && (arg[i] <= 'z'))
 			_putchar(arg[i--] + 13);
-		if ((arg[i] > 'A') && (arg[i] < 'Z'))
+		if ((arg[i] >= 'A') && (arg[i] <= 'Z'))
 			_putchar(arg[i--] - 13);
 	}
 	(*idx)++;
