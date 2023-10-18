@@ -86,7 +86,7 @@ int space_print(const char *format, va_list args, int *idx)
 	if ((format[++i] == '%') && (format[++i] == ' '))
 	{
 		(*idx) = i;
-		return (write(1, "% % ", 4));
+		return (write(1, "% %", 3));
 	}
 	if (((format[(*idx)]) == 'd') || ((format[(*idx)]) == 'i'))
 	{
