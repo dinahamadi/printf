@@ -30,7 +30,9 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			if (rtrn == -1)
-				return (-1);
+			{
+				break;
+			}
 			count += rtrn;
 		}
 	}
@@ -46,9 +48,7 @@ int _printf(const char *format, ...)
  */
 int get_format(const char *format, va_list args, int *idx)
 {
-	int i = 0, res = 0;
-	int consum = *idx;
-
+	int i = 0, res = 0, consum = *idx;
 	op_t ops[] = {
 		{"i", (int (*)(const char*, ...))int_print},
 		{"d", (int (*)(const char*, ...))int_print},
@@ -75,15 +75,16 @@ int get_format(const char *format, va_list args, int *idx)
 		{" ", (int (*)(const char*, ...))space_print},
 		{NULL, NULL}
 	};
-	while (ops[i].op[0])
+	if (format[*idx] != '\0')
 	{
-		if (ops[i].op[0] == format[*idx])
-		{
-			res = ops[i].f(format, args, &consum);
-			*idx = consum;
-			return (res);
-		}
-		i++;
+		for (i = 0; ops[i].op != NULL; i++)
+			if (ops[i].op[0] == format[*idx])
+			{
+				res = ops[i].f(format, args, &consum);
+				*idx = consum;
+				return (res);
+			}
+		return (_putchar('%') + _putchar(format[(*idx)++]));
 	}
-	return (-1);
+	return (0);
 }
