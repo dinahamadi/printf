@@ -101,7 +101,6 @@ int l_align_print(const char *format, va_list args, int *idx)
 {
 	int res = 0, arg, align = 0;
 
-	
 	if ((format[++(*idx)]) == '\0')
 		return (-1);
 	if (isdigit(format[(*idx)]))
