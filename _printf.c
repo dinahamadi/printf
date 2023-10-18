@@ -30,9 +30,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			if (rtrn == -1)
-			{
-				break;
-			}
+				return (-1);
 			count += rtrn;
 		}
 	}
