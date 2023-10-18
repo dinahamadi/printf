@@ -84,5 +84,5 @@ int get_format(const char *format, va_list args, int *idx)
 			}
 		return (_putchar('%') + _putchar(format[(*idx)++]));
 	}
-	return (0);
+	return (-1);
 }
