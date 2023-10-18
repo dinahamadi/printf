@@ -114,3 +114,19 @@ int per_print(const char *format, va_list args, int *idx)
 	(*idx)++;
 	return (_putchar('%'));
 }
+/**
+ * l_padd - print space
+ * @diff: number of spaces
+ * Return: the count of printed characters.
+ */
+int l_padd(int diff)
+{
+	int res = 0;
+
+	while (diff > 0)
+	{
+		res += putchar(' ');
+		diff--;
+	}
+	return (res);
+}

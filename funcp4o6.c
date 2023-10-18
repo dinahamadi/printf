@@ -99,10 +99,42 @@ int zero_padd_print(const char *format, va_list args, int *idx)
  */
 int l_align_print(const char *format, va_list args, int *idx)
 {
-	(void)idx;
-	(void)format;
-	(void)args;
-	return (1);
+	int res = 0, arg, align = 0;
+
+	if ((format[++(*idx)]) == '\0')
+		return (-1);
+	if (!isdigit(format[(*idx)]) && format[(*idx)] >= 0)
+		align = format[(*idx++)];
+	else
+		return (-1);
+	if (((format[(*idx)]) == 'd') || ((format[(*idx)]) == 'i'))
+	{
+		arg = va_arg(args, int);
+		if (arg == 0)
+		{
+			(*idx)++;
+			res = write(1, "0", 1);
+			res += l_padd(align - 1);
+			return (res);
+		}
+		if (arg < 0)
+		{
+			res += _putchar('-');
+			if (arg == INT_MIN)
+			{
+				(*idx)++;
+				res += _putchar('2');
+				return (res + write(1, "147483648", 9));
+			}
+			else
+				arg = (-1) * arg;
+		};
+		res += print_pos_arg(arg);
+		res += l_padd(align - res);
+		(*idx)++;
+		return (res);
+	}
+	return (-1);
 }
 /**
  * sign_print - handle the %+ in printf

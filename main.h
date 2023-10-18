@@ -57,5 +57,6 @@ int write_h_hex(unsigned long arg);
 int write_long(long arg);
 int write_ulong(unsigned long arg);
 int print_pos_arg(int arg);
+int l_padd(int diff);
 
 #endif
